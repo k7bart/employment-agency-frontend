@@ -1,0 +1,9 @@
+<h3 class="card-title">
+  {{ title() }}
+
+  @if(minSalary()){
+  <span class="colored-text">from ${{ minSalary() }}</span>
+  } @if(maxSalary()){
+  <span class="colored-text">up to ${{ maxSalary() }}</span>
+  }
+</h3>
