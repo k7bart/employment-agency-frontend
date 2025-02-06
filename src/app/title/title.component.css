@@ -1,0 +1,24 @@
+h1 {
+  padding-bottom: 20px;
+  font-size: 32px;
+  line-height: 38px;
+
+  @media (min-width: 768px) {
+    & {
+      font-size: 52px;
+      line-height: 62px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    & {
+      font-size: 75px;
+      line-height: 80px;
+    }
+  }
+
+  .text-muted {
+    color: black;
+    opacity: 0.1;
+  }
+}
