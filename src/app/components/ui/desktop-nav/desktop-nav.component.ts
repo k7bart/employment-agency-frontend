@@ -10,7 +10,7 @@ const NAV_ITEMS = [
 @Component({
   selector: 'desctop-nav',
   imports: [NavItemComponent],
-  templateUrl: './desctop-nav.component.html',
+  templateUrl: './desktop-nav.component.html',
 })
 export class DesctopNavComponent {
   navItems = NAV_ITEMS;
