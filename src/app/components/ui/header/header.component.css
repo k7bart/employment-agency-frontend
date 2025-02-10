@@ -1,0 +1,45 @@
+header {
+  width: 100%;
+  height: 88px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > .desktop-nav {
+    display: none;
+  }
+  > .mobile-nav {
+    display: block;
+  }
+
+  @media (min-width: 1920px) {
+    & {
+      height: 112px;
+      width: 1520px;
+      padding: 16px 0 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    & {
+      width: 1240px;
+      padding: 15px 0 0;
+      height: 93px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    & {
+      padding: 24px 50px;
+
+      > .mobile-nav {
+        display: none;
+      }
+      > .desktop-nav {
+        display: block;
+      }
+    }
+  }
+}
