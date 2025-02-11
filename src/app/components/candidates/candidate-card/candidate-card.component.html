@@ -1,0 +1,14 @@
+<app-card>
+  <card-details>
+    <app-tag [text]="candidate().area" />
+
+    <div>
+      {{ candidate().address.countryWithFlag }}
+    </div>
+  </card-details>
+
+  <card-title
+    [title]="candidate().firstAndLastName"
+    [maxSalary]="candidate().salary"
+  />
+</app-card>
