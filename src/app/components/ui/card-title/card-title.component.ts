@@ -7,6 +7,7 @@ import { Component, input } from '@angular/core';
   styleUrl: './card-title.component.css',
 })
 export class CardTitleComponent {
+  commission = input<number>();
   maxSalary = input<number>();
   minSalary = input<number>();
   title = input.required<string>();
