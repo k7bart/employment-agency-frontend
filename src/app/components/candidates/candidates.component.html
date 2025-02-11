@@ -1,0 +1,14 @@
+<app-title [title]="'Candidates'" [mutedNum]="candidates.length" />
+
+<div>
+  <section>
+    @for(candidate of candidates; track candidate.id){
+    <candidate-card [candidate]="candidate" />
+    <mat-divider></mat-divider>
+    }
+  </section>
+
+  <app-aside>
+    <aside-button text="Add candidate" />
+  </app-aside>
+</div>
