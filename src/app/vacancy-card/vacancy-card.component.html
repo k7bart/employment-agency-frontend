@@ -1,0 +1,15 @@
+<app-card>
+  <card-details>
+    <a href="/jobs/company">{{ vacancy().name }}</a>
+
+    <app-tag [text]="vacancy().tag" />
+
+    <div>{{ vacancy().location.countryWithFlag }}</div>
+  </card-details>
+
+  <card-title
+    [title]="vacancy().title"
+    [maxSalary]="vacancy().maxSalary"
+    [minSalary]="vacancy().minSalary"
+  />
+</app-card>
