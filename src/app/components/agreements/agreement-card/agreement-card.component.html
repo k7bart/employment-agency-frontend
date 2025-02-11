@@ -1,0 +1,20 @@
+<app-card>
+  <card-details>
+    <app-tag [text]="agreement().vacancy.area" />
+
+    <div>{{ agreement().vacancy.location.countryWithFlag }}</div>
+  </card-details>
+
+  <card-title
+    [title]="
+      agreement().vacancy.employer +
+      ' & ' +
+      agreement().employee.firstAndLastName
+    "
+    [commission]="agreement().commission"
+  />
+
+  <card-details>
+    <div>{{ agreement().vacancy.title }}</div>
+  </card-details>
+</app-card>
