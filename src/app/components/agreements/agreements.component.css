@@ -1,0 +1,18 @@
+div {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (min-width: 768px) {
+    & {
+      flex-direction: row;
+    }
+  }
+
+  section {
+    flex: 2;
+  }
+
+  app-aside {
+    flex: 1;
+  }
+}

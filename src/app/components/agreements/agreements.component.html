@@ -1,0 +1,14 @@
+<app-title [title]="'Agreements'" [mutedNum]="agreements.length" />
+
+<div>
+  <section>
+    @for(agreement of agreements; track agreement.id){
+    <agreement-card [agreement]="agreement" />
+    <mat-divider></mat-divider>
+    }
+  </section>
+
+  <app-aside>
+    <aside-button text="Add agreement" />
+  </app-aside>
+</div>
