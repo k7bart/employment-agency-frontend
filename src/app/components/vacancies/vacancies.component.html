@@ -1,0 +1,24 @@
+<app-title [title]="'Vacancies'" [mutedNum]="vacancies.length" />
+
+<div>
+  <section>
+    @for(vacancy of vacancies; track vacancy.id){
+    <vacancy-card [vacancy]="vacancy" />
+    <mat-divider></mat-divider>
+    }
+  </section>
+
+  <app-aside class="aside">
+    <aside-button text="Add vacancy" />
+
+    <chips-container>
+      <app-tag text="IT" />
+      <app-tag text="Marketing" />
+      <app-tag text="Sales" />
+      <app-tag text="Finance" />
+      <app-tag text="Human Resources" />
+      <app-tag text="Operations" />
+      <app-tag text="Legal" />
+    </chips-container>
+  </app-aside>
+</div>
