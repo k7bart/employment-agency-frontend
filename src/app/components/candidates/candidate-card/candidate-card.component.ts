@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { CardComponent } from '../../ui/card/card.component';
 import { CardDetailsComponent } from '../../ui/card-details/card-details.component';
-import { CardTitleComponent } from '../../../card-title/card-title.component';
+import { CardTitleComponent } from '../../ui/card-title/card-title.component';
 import { Employee } from '../../../models/employee.model';
 import { TagComponent } from '../../ui/tag/tag.component';
 

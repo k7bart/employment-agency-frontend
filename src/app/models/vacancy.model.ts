@@ -3,8 +3,8 @@ interface IVacancy {
   location: { flag: string; country: string; city: string };
   maxSalary?: number | undefined;
   minSalary?: number | undefined;
-  name: string;
-  tag: string;
+  employer: string;
+  area: string;
   title: string;
 }
 
@@ -18,8 +18,8 @@ export class Vacancy implements IVacancy {
   };
   maxSalary?: number | undefined;
   minSalary?: number | undefined;
-  name: string;
-  tag: string;
+  employer: string;
+  area: string;
   title: string;
 
   constructor(vacancy: IVacancy) {
@@ -32,8 +32,8 @@ export class Vacancy implements IVacancy {
     };
     this.maxSalary = vacancy.maxSalary;
     this.minSalary = vacancy.minSalary;
-    this.name = vacancy.name;
-    this.tag = vacancy.tag;
+    this.employer = vacancy.employer;
+    this.area = vacancy.area;
     this.title = vacancy.title;
   }
 }
