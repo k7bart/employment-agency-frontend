@@ -9,6 +9,7 @@ import { MatDivider } from '@angular/material/divider';
 
 import { CandidateCardComponent } from '../../candidates/candidate-card/candidate-card.component';
 import { DetailsComponent } from '../../ui/details/details.component';
+import { H2TitleComponent } from '../../ui/h2-title/h2-title.component';
 import { TagComponent } from '../../ui/tag/tag.component';
 import { TextComponent } from '../../ui/text/text.component';
 import { TitleComponent } from '../../ui/title/title.component';
@@ -20,6 +21,7 @@ import { TitleComponent } from '../../ui/title/title.component';
 
     CandidateCardComponent,
     DetailsComponent,
+    H2TitleComponent,
     TagComponent,
     TextComponent,
     TitleComponent,
