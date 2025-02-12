@@ -1,0 +1,9 @@
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  app-h2-title {
+    text-align: center;
+  }
+}
