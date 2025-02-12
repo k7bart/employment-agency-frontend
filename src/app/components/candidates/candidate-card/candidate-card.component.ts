@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Employee } from '../../../models/employee.model';
+import { Candidate } from '../../../models/candidate.model';
 
 import { CardComponent } from '../../ui/card/card.component';
 import { CardDetailsComponent } from '../../ui/card-details/card-details.component';
@@ -21,9 +21,9 @@ import { TagComponent } from '../../ui/tag/tag.component';
 export class CandidateCardComponent {
   private readonly router = inject(Router);
 
-  candidate = input.required<Employee>();
+  candidate = input.required<Candidate>();
 
-  goToCandidate(id: Employee['id']) {
+  goToCandidate(id: Candidate['id']) {
     this.router.navigate(['/candidates', id]);
   }
 }

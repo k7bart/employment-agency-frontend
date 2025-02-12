@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { CandidatesService } from '../../services/candidates.service';
-import { Employee } from '../../models/employee.model';
+import { Candidate } from '../../models/candidate.model';
 
 import { AsideComponent } from '../ui/aside/aside.component';
 import { AsideButtonComponent } from '../ui/aside-button/aside-button.component';
@@ -23,7 +23,7 @@ import { TitleComponent } from '../ui/title/title.component';
   styleUrl: './candidates.component.css',
 })
 export class CandidatesComponent {
-  @Input() candidates: Employee[] = [];
+  @Input() candidates: Candidate[] = [];
 
   constructor(public candidatesService: CandidatesService) {}
 
