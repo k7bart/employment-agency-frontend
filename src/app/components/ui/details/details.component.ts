@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'card-details',
+  selector: 'app-details',
   imports: [],
   template: '<div><ng-content></ng-content></div>',
-  styleUrl: './card-details.component.css',
+  styleUrl: './details.component.css',
 })
-export class CardDetailsComponent {}
+export class DetailsComponent {}

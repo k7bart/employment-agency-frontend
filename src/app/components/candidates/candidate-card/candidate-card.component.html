@@ -1,11 +1,11 @@
 <app-card>
-  <card-details>
+  <app-details>
     <app-tag [text]="candidate().area" />
 
     <div>
       {{ candidate().address.countryWithFlag }}
     </div>
-  </card-details>
+  </app-details>
 
   <card-title
     (click)="goToCandidate(candidate().id)"

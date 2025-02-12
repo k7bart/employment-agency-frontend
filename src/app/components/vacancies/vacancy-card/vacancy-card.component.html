@@ -1,11 +1,11 @@
 <app-card>
-  <card-details>
+  <app-details>
     <a href="/jobs/company">{{ vacancy().employer }}</a>
 
     <app-tag [text]="vacancy().area" />
 
     <div>{{ vacancy().location.countryWithFlag }}</div>
-  </card-details>
+  </app-details>
 
   <card-title
     (click)="goToVacancy(vacancy().id)"

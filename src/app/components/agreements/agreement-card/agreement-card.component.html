@@ -1,9 +1,9 @@
 <app-card>
-  <card-details>
+  <app-details>
     <app-tag [text]="agreement().vacancy.area" />
 
     <div>{{ agreement().vacancy.location.countryWithFlag }}</div>
-  </card-details>
+  </app-details>
 
   <card-title
     (click)="goToAgreement(agreement().id)"
@@ -15,7 +15,7 @@
     [commission]="agreement().commission"
   />
 
-  <card-details>
+  <app-details>
     <div>{{ agreement().vacancy.title }}</div>
-  </card-details>
+  </app-details>
 </app-card>
