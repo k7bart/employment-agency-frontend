@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Agreement } from '../../../models/agreement.model';
 
@@ -16,8 +17,13 @@ import { TagComponent } from '../../ui/tag/tag.component';
     TagComponent,
   ],
   templateUrl: './agreement-card.component.html',
-  styleUrl: './agreement-card.component.css',
 })
 export class AgreementCardComponent {
+  private readonly router = inject(Router);
+
   agreement = input.required<Agreement>();
+
+  goToAgreement(id: Agreement['id']) {
+    this.router.navigate(['/agreements', id]);
+  }
 }

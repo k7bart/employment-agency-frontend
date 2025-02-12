@@ -1,5 +1,5 @@
 interface IVacancy {
-  id: number;
+  id: string;
   location: { flag: string; country: string; city: string };
   maxSalary?: number | undefined;
   minSalary?: number | undefined;
@@ -9,7 +9,7 @@ interface IVacancy {
 }
 
 export class Vacancy implements IVacancy {
-  id: number;
+  id: string;
   location: {
     flag: string;
     country: string;

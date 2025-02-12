@@ -2,14 +2,14 @@ import { Employee } from './employee.model';
 import { Vacancy } from './vacancy.model';
 
 interface IAgreement {
-  id: number;
+  id: string;
   vacancy: Vacancy;
   employee: Employee;
   commission: number;
 }
 
 export class Agreement implements IAgreement {
-  id: number;
+  id: string;
   vacancy: Vacancy;
   employee: Employee;
   commission: number;

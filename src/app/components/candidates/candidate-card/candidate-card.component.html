@@ -8,6 +8,7 @@
   </card-details>
 
   <card-title
+    (click)="goToCandidate(candidate().id)"
     [title]="candidate().firstAndLastName"
     [maxSalary]="candidate().salary"
   />

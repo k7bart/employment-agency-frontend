@@ -6,6 +6,9 @@ h3 {
   flex-wrap: wrap;
   gap: 0 5px;
 
+  cursor: pointer;
+  transition: color 0.3s;
+
   @media (min-width: 1280px) {
     & {
       font-size: 26px;
@@ -14,6 +17,16 @@ h3 {
   }
 
   > span.colored-text {
+    transition: color 0.3s;
+    display: contents;
     color: var(--brand-color);
+  }
+
+  &:hover {
+    color: var(--brand-color);
+
+    > span.colored-text {
+      color: var(--brand-color-hover);
+    }
   }
 }

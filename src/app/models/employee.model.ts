@@ -1,5 +1,5 @@
 export interface IEmployee {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   patronymic: string;
@@ -14,7 +14,7 @@ export interface IEmployee {
 }
 
 export class Employee implements IEmployee {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   patronymic: string;

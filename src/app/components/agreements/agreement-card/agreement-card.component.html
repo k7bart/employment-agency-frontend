@@ -6,6 +6,7 @@
   </card-details>
 
   <card-title
+    (click)="goToAgreement(agreement().id)"
     [title]="
       agreement().vacancy.employer +
       ' & ' +

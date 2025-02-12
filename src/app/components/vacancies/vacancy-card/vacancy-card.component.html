@@ -8,6 +8,7 @@
   </card-details>
 
   <card-title
+    (click)="goToVacancy(vacancy().id)"
     [title]="vacancy().title"
     [maxSalary]="vacancy().maxSalary"
     [minSalary]="vacancy().minSalary"

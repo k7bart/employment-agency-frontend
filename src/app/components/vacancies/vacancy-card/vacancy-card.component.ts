@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Vacancy } from '../../../models/vacancy.model';
 
@@ -18,5 +19,11 @@ import { TagComponent } from '../../ui/tag/tag.component';
   templateUrl: './vacancy-card.component.html',
 })
 export class VacancyCardComponent {
+  private readonly router = inject(Router);
+
   vacancy = input.required<Vacancy>();
+
+  goToVacancy(id: Vacancy['id']) {
+    this.router.navigate(['/vacancies', id]);
+  }
 }
