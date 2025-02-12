@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { Agreement } from '../../models/agreement.model';
@@ -22,8 +22,8 @@ import { TitleComponent } from '../ui/title/title.component';
   templateUrl: './agreements.component.html',
   styleUrl: './agreements.component.css',
 })
-export class AgreementsComponent {
-  @Input() agreements: Agreement[] = [];
+export class AgreementsComponent implements OnInit {
+  agreements: Agreement[] = [];
 
   constructor(public agreementsService: AgreementsService) {}
 

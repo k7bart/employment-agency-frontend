@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { VacanciesService } from '../../services/vacancies.service';
@@ -27,7 +27,7 @@ import { VacancyCardComponent } from '../vacancies/vacancy-card/vacancy-card.com
   styleUrl: './vacancies.component.css',
 })
 export class VacanciesComponent implements OnInit {
-  @Input() vacancies: Vacancy[] = [];
+  vacancies: Vacancy[] = [];
 
   constructor(public vacanciesService: VacanciesService) {}
 

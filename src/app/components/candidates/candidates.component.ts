@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { CandidatesService } from '../../services/candidates.service';
@@ -22,8 +22,8 @@ import { TitleComponent } from '../ui/title/title.component';
   templateUrl: './candidates.component.html',
   styleUrl: './candidates.component.css',
 })
-export class CandidatesComponent {
-  @Input() candidates: Candidate[] = [];
+export class CandidatesComponent implements OnInit {
+  candidates: Candidate[] = [];
 
   constructor(public candidatesService: CandidatesService) {}
 
