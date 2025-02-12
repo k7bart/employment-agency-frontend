@@ -21,4 +21,8 @@ h1 {
     color: black;
     opacity: 0.1;
   }
+
+  .colored-text {
+    color: var(--brand-color);
+  }
 }

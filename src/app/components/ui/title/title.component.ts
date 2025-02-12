@@ -7,6 +7,9 @@ import { Component, input } from '@angular/core';
   styleUrl: './title.component.css',
 })
 export class TitleComponent {
-  title = input.required<string>();
+  commission = input<number>();
+  maxSalary = input<number>();
+  minSalary = input<number>();
   mutedNum = input<number>();
+  title = input.required<string>();
 }
