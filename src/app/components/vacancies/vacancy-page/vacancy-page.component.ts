@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 
 import { Candidate } from '../../../models/candidate.model';
 import { Vacancy } from '../../../models/vacancy.model';
@@ -17,6 +19,8 @@ import { TitleComponent } from '../../ui/title/title.component';
 @Component({
   selector: 'app-vacancy-page',
   imports: [
+    AsyncPipe,
+
     MatDivider,
 
     CandidateCardComponent,
@@ -30,20 +34,18 @@ import { TitleComponent } from '../../ui/title/title.component';
   styleUrl: './vacancy-page.component.css',
 })
 export class VacancyPageComponent {
-  vacancy: Vacancy | undefined;
-  candidates: Candidate[] = [];
+  vacancy$!: Observable<Vacancy>;
+  candidates$!: Observable<Candidate[]>;
 
-  constructor(
-    public vacanciesService: VacanciesService,
-    public candidatesService: CandidatesService
-  ) {}
+  constructor(public vacanciesService: VacanciesService, public candidatesService: CandidatesService) {}
 
   @Input()
-  set id(vacancyId: Vacancy['id']) {
-    this.vacancy = this.vacanciesService.getVacancyById(vacancyId);
+  set id(vacancyId: Vacancy['_id']) {
+    this.vacancy$ = this.vacanciesService.getVacancyById(vacancyId);
   }
 
+  // get suitable candidates
   ngOnInit() {
-    this.candidates = this.candidatesService.getCandidates();
+    this.candidates$ = this.candidatesService.getCandidates();
   }
 }

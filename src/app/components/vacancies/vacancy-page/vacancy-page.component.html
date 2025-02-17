@@ -1,4 +1,4 @@
-@if (vacancy) {
+@if (vacancy$ | async; as vacancy) {
 <app-title [title]="vacancy.title" [maxSalary]="vacancy.maxSalary" />
 
 <div>
@@ -7,30 +7,33 @@
 
     <app-tag [text]="vacancy.area" />
 
-    <div>{{ vacancy.location.countryWithFlag }}</div>
+    <div>{{ vacancy.location.flag + " " + vacancy.location.country }}</div>
   </app-details>
 
   <app-text>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id
-    porttitor ante. Ut et lectus eget arcu varius fermentum sed in lacus.
-    Pellentesque vulputate, nunc quis laoreet volutpat, augue ligula facilisis
-    nulla, non rhoncus sem sapien vitae lorem. Sed gravida augue diam, eget
-    laoreet tellus condimentum sit amet. Aenean neque ex, varius nec eleifend
-    et, tempor et leo. Fusce ultrices mi est, eu laoreet justo viverra a. Etiam
-    dictum, enim maximus euismod maximus, felis arcu aliquam libero, vitae
-    commodo risus urna quis eros. Donec placerat ut tortor quis cursus.
-    Phasellus non quam lorem. Etiam non metus rutrum, ullamcorper augue sed,
-    malesuada justo. Suspendisse ornare ipsum nec vulputate molestie. Maecenas
-    interdum eleifend justo. Vestibulum id posuere ligula.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id porttitor ante. Ut et lectus eget arcu
+    varius fermentum sed in lacus. Pellentesque vulputate, nunc quis laoreet volutpat, augue ligula facilisis nulla, non
+    rhoncus sem sapien vitae lorem. Sed gravida augue diam, eget laoreet tellus condimentum sit amet. Aenean neque ex,
+    varius nec eleifend et, tempor et leo. Fusce ultrices mi est, eu laoreet justo viverra a. Etiam dictum, enim maximus
+    euismod maximus, felis arcu aliquam libero, vitae commodo risus urna quis eros. Donec placerat ut tortor quis
+    cursus. Phasellus non quam lorem. Etiam non metus rutrum, ullamcorper augue sed, malesuada justo. Suspendisse ornare
+    ipsum nec vulputate molestie. Maecenas interdum eleifend justo. Vestibulum id posuere ligula.
   </app-text>
 
   <section>
+    @if (candidates$ | async; as candidates) { @if (candidates.length > 0) {
+
     <app-h2-title>Potential candidates</app-h2-title>
 
-    @for(candidate of candidates; track candidate.id){
-    <candidate-card [candidate]="candidate" />
+    @for(candidate of candidates; track candidate._id){
+
+    <app-candidate-card [candidate]="candidate" />
     <mat-divider></mat-divider>
-    }
+
+    } } @else {
+
+    <app-h2-title> No candidates yet 😔 </app-h2-title>
+    } }
   </section>
 </div>
 }
