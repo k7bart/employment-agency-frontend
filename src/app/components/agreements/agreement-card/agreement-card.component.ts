@@ -9,7 +9,7 @@ import { DetailsComponent } from '../../ui/details/details.component';
 import { TagComponent } from '../../ui/tag/tag.component';
 
 @Component({
-  selector: 'agreement-card',
+  selector: 'app-agreement-card',
   imports: [CardComponent, DetailsComponent, CardTitleComponent, TagComponent],
   templateUrl: './agreement-card.component.html',
 })
@@ -18,7 +18,7 @@ export class AgreementCardComponent {
 
   agreement = input.required<Agreement>();
 
-  goToAgreement(id: Agreement['id']) {
+  goToAgreement(id: Agreement['_id']) {
     this.router.navigate(['/agreements', id]);
   }
 }

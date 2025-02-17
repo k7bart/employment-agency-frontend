@@ -2,15 +2,23 @@
   <app-details>
     <app-tag [text]="agreement().vacancy.area" />
 
-    <div>{{ agreement().vacancy.location.countryWithFlag }}</div>
+    <div>
+      {{
+        agreement().vacancy.location.flag +
+          " " +
+          agreement().vacancy.location.country
+      }}
+    </div>
   </app-details>
 
-  <card-title
-    (click)="goToAgreement(agreement().id)"
+  <app-card-title
+    (click)="goToAgreement(agreement()._id)"
     [title]="
-      agreement().vacancy.employer +
+      agreement().vacancy.employer.name +
       ' & ' +
-      agreement().candidate.firstAndLastName
+      agreement().candidate.firstName +
+      ' ' +
+      agreement().candidate.lastName
     "
     [commission]="agreement().commission"
   />
