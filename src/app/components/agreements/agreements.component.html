@@ -1,10 +1,14 @@
+@if (agreements$ | async; as agreements) {
 <app-title [title]="'Agreements'" [mutedNum]="agreements.length" />
 
 <div>
   <section>
-    @for(agreement of agreements; track agreement.id){
-    <agreement-card [agreement]="agreement" />
+    @if (agreements.length > 0) { @for (agreement of agreements; track
+    agreement._id) {
+    <app-agreement-card [agreement]="agreement" />
     <mat-divider></mat-divider>
+    } } @else {
+    <app-h2-title> No agreements yet 😔 </app-h2-title>
     }
   </section>
 
@@ -12,3 +16,4 @@
     <aside-button text="Add agreement" />
   </app-aside>
 </div>
+}
