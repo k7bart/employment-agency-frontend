@@ -1,10 +1,13 @@
+@if (candidates$ | async; as candidates) {
 <app-title [title]="'Candidates'" [mutedNum]="candidates.length" />
 
 <div>
   <section>
-    @for(candidate of candidates; track candidate.id){
-    <candidate-card [candidate]="candidate" />
+    @if (candidates.length > 0) { @for (candidate of candidates; track candidate._id) {
+    <app-candidate-card [candidate]="candidate"></app-candidate-card>
     <mat-divider></mat-divider>
+    } } @else {
+    <app-h2-title> No candidates yet 😔 </app-h2-title>
     }
   </section>
 
@@ -12,3 +15,4 @@
     <aside-button text="Add candidate" />
   </app-aside>
 </div>
+}
