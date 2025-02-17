@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Candidate } from '../../../models/candidate.model';
@@ -9,7 +9,7 @@ import { DetailsComponent } from '../../ui/details/details.component';
 import { TagComponent } from '../../ui/tag/tag.component';
 
 @Component({
-  selector: 'candidate-card',
+  selector: 'app-candidate-card',
   imports: [CardComponent, DetailsComponent, CardTitleComponent, TagComponent],
   templateUrl: './candidate-card.component.html',
 })
@@ -18,7 +18,7 @@ export class CandidateCardComponent {
 
   candidate = input.required<Candidate>();
 
-  goToCandidate(id: Candidate['id']) {
+  goToCandidate(id: Candidate['_id']) {
     this.router.navigate(['/candidates', id]);
   }
 }
