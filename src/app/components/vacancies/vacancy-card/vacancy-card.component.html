@@ -4,11 +4,11 @@
 
     <app-tag [text]="vacancy().area" />
 
-    <div>{{ vacancy().location.countryWithFlag }}</div>
+    <div>{{ vacancy().location.flag + " " + vacancy().location.country }}</div>
   </app-details>
 
-  <card-title
-    (click)="goToVacancy(vacancy().id)"
+  <app-card-title
+    (click)="goToVacancy(vacancy()._id)"
     [title]="vacancy().title"
     [maxSalary]="vacancy().maxSalary"
     [minSalary]="vacancy().minSalary"
