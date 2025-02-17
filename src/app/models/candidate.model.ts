@@ -1,48 +1,47 @@
 export interface ICandidate {
-  id: string;
+  _id: string;
   firstName: string;
   lastName: string;
-  patronymic: string;
-  address: {
-    flag: string;
+  patronymic?: string;
+  area: string;
+  qualification: string;
+  salary: number;
+  phone: string;
+  location: {
     country: string;
+    flag: string;
     city: string;
   };
-  qualification: string;
-  area: string;
-  salary: number;
 }
 
 export class Candidate implements ICandidate {
-  id: string;
+  _id: string;
   firstName: string;
   lastName: string;
-  patronymic: string;
-  firstAndLastName: string;
-  address: {
-    flag: string;
+  patronymic?: string;
+  area: string;
+  qualification: string;
+  salary: number;
+  phone: string;
+  location: {
     country: string;
-    countryWithFlag: string;
+    flag: string;
     city: string;
   };
-  qualification: string;
-  area: string;
-  salary: number;
 
   constructor(candidate: ICandidate) {
-    this.id = candidate.id;
+    this._id = candidate._id;
     this.firstName = candidate.firstName;
     this.lastName = candidate.lastName;
     this.patronymic = candidate.patronymic;
-    this.firstAndLastName = `${candidate.firstName} ${candidate.lastName}`;
-    this.address = {
-      flag: candidate.address.flag,
-      country: candidate.address.country,
-      countryWithFlag: `${candidate.address.flag} ${candidate.address.country}`,
-      city: candidate.address.city,
-    };
-    this.qualification = candidate.qualification;
     this.area = candidate.area;
+    this.qualification = candidate.qualification;
     this.salary = candidate.salary;
+    this.phone = candidate.phone;
+    this.location = {
+      country: candidate.location.country,
+      flag: candidate.location.flag,
+      city: candidate.location.city,
+    };
   }
 }

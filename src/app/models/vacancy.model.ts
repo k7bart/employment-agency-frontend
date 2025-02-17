@@ -1,39 +1,37 @@
 interface IVacancy {
-  id: string;
-  location: { flag: string; country: string; city: string };
-  maxSalary?: number | undefined;
-  minSalary?: number | undefined;
+  _id: string;
+  title: string;
   employer: string;
   area: string;
-  title: string;
+  maxSalary?: number | undefined;
+  minSalary?: number | undefined;
+  location: { country: string; flag: string; city: string };
 }
 
 export class Vacancy implements IVacancy {
-  id: string;
-  location: {
-    flag: string;
-    country: string;
-    countryWithFlag: string;
-    city: string;
-  };
-  maxSalary?: number | undefined;
-  minSalary?: number | undefined;
+  _id: string;
+  title: string;
   employer: string;
   area: string;
-  title: string;
+  maxSalary?: number | undefined;
+  minSalary?: number | undefined;
+  location: {
+    country: string;
+    flag: string;
+    city: string;
+  };
 
   constructor(vacancy: IVacancy) {
-    this.id = vacancy.id;
-    this.location = {
-      flag: vacancy.location.flag,
-      country: vacancy.location.country,
-      countryWithFlag: `${vacancy.location.flag} ${vacancy.location.country}`,
-      city: vacancy.location.city,
-    };
-    this.maxSalary = vacancy.maxSalary;
-    this.minSalary = vacancy.minSalary;
+    this._id = vacancy._id;
+    this.title = vacancy.title;
     this.employer = vacancy.employer;
     this.area = vacancy.area;
-    this.title = vacancy.title;
+    this.maxSalary = vacancy.maxSalary;
+    this.minSalary = vacancy.minSalary;
+    this.location = {
+      country: vacancy.location.country,
+      flag: vacancy.location.flag,
+      city: vacancy.location.city,
+    };
   }
 }
