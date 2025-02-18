@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 
+import { Area } from '../models/area.model';
 import { Candidate } from '../models/candidate.model';
+import { Vacancy } from '../models/vacancy.model';
 
 @Injectable({ providedIn: 'root' })
 export class CandidatesService {
@@ -19,11 +21,11 @@ export class CandidatesService {
   }
 
   getSuitableCandidates(
-    areaId: string,
-    country: string,
-    city: string,
-    minSalary?: number | undefined,
-    maxSalary?: number | undefined
+    areaId: Area['_id'],
+    country: Vacancy['location']['country'],
+    city: Vacancy['location']['city'],
+    minSalary?: Vacancy['minSalary'],
+    maxSalary?: Vacancy['maxSalary']
   ) {
     let params = new HttpParams()
       .set('areaId', areaId)
