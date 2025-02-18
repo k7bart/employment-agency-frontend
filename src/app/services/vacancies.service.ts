@@ -15,6 +15,12 @@ export class VacanciesService {
     return this.http.get<Vacancy>(`http://localhost:8080/vacancies/${id}`);
   }
 
+  getVacanciesByEmployerId(id: Vacancy['_id']) {
+    return this.http.get<Vacancy[]>(
+      `http://localhost:8080/vacancies/employer/${id}`
+    );
+  }
+
   addVacancy(vacancy: Vacancy) {
     return this.http.post<Vacancy>('http://localhost:8080/vacancies', vacancy);
   }
