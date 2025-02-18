@@ -2,20 +2,20 @@ import { Candidate } from './candidate.model';
 import { Vacancy } from './vacancy.model';
 
 interface IAgreement {
-  id: string;
+  _id: string;
   vacancy: Vacancy;
   candidate: Candidate;
   commission: number;
 }
 
 export class Agreement implements IAgreement {
-  id: string;
+  _id: string;
   vacancy: Vacancy;
   candidate: Candidate;
   commission: number;
 
   constructor(agreement: IAgreement) {
-    this.id = agreement.id;
+    this._id = agreement._id;
     this.vacancy = agreement.vacancy;
     this.candidate = agreement.candidate;
     this.commission = agreement.commission;

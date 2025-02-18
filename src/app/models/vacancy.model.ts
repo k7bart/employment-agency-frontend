@@ -1,8 +1,11 @@
+import { Area } from './area.model';
+import { Employer } from './employer.model';
+
 interface IVacancy {
   _id: string;
   title: string;
-  employer: string;
-  area: string;
+  employer: Employer;
+  area: Area;
   maxSalary?: number | undefined;
   minSalary?: number | undefined;
   location: { country: string; flag: string; city: string };
@@ -11,8 +14,8 @@ interface IVacancy {
 export class Vacancy implements IVacancy {
   _id: string;
   title: string;
-  employer: string;
-  area: string;
+  employer: Employer;
+  area: Area;
   maxSalary?: number | undefined;
   minSalary?: number | undefined;
   location: {

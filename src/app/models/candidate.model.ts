@@ -1,9 +1,11 @@
+import { Area } from './area.model';
+
 export interface ICandidate {
   _id: string;
   firstName: string;
   lastName: string;
   patronymic?: string;
-  area: string;
+  area: Area;
   qualification: string;
   salary: number;
   phone: string;
@@ -19,7 +21,7 @@ export class Candidate implements ICandidate {
   firstName: string;
   lastName: string;
   patronymic?: string;
-  area: string;
+  area: Area;
   qualification: string;
   salary: number;
   phone: string;
