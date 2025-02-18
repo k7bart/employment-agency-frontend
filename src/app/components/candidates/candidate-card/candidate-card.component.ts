@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Candidate } from '../../../models/candidate.model';
@@ -19,6 +19,6 @@ export class CandidateCardComponent {
   candidate = input.required<Candidate>();
 
   goToCandidate(id: Candidate['_id']) {
-    this.router.navigate(['/candidates', id]);
+    this.router.navigate(['/candidates/candidate/', id]);
   }
 }
