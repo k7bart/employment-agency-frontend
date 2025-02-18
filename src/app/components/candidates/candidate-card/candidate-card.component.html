@@ -1,11 +1,13 @@
 <app-card>
   <app-details>
-    <app-tag [text]="candidate().area" />
+    <app-tag [text]="candidate().area.name" />
 
-    <div>{{ candidate().location.flag + " " + candidate().location.country }}</div>
+    <div>
+      {{ candidate().location.flag + " " + candidate().location.country }}
+    </div>
   </app-details>
 
-  <card-title
+  <app-card-title
     (click)="goToCandidate(candidate()._id)"
     [title]="candidate().firstName + ' ' + candidate().lastName"
     [minSalary]="candidate().salary"
