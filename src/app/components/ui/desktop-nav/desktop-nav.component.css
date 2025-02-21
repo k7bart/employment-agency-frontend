@@ -1,0 +1,12 @@
+button.logout {
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 800;
+  padding: 0 20px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--brand-color);
+  }
+}

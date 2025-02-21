@@ -1,3 +1,10 @@
-@for( navItem of navItems; track navItem.name){
-<app-nav-item [name]="navItem.name" [href]="navItem.href" />
+@if (authService.isLoggedIn()) {
+  @for (navItem of authedNavItems; track navItem.name) {
+    <app-nav-item [name]="navItem.name" [href]="navItem.href" />
+  }
+  <button class="logout" (click)="this.authService.logout()">Logout</button>
+} @else {
+  @for (navItem of notAuthedNavItems; track navItem.name) {
+    <app-nav-item [name]="navItem.name" [href]="navItem.href" />
+  }
 }
