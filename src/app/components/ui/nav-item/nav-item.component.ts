@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-nav-item',
   imports: [RouterModule],
-  template: '<a [routerLink]="href()">{{ name() }}</a>',
+  template:
+    '<a [routerLink]="href()" routerLinkActive="active">{{ name() }}</a>',
   styleUrl: './nav-item.component.css',
 })
 export class NavItemComponent {
