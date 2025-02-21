@@ -5,6 +5,6 @@ export const AUTHED_NAV_ITEMS = [
 ];
 
 export const NOT_AUTHED_NAV_ITEMS = [
-  { name: 'Login', href: '/login' },
   { name: 'Signup', href: '/signup' },
+  { name: 'Login', href: '/login' },
 ];
