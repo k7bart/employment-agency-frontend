@@ -9,6 +9,7 @@ import { CandidatesComponent } from './components/candidates/candidates.componen
 import { HomeComponent } from './components/ui/home/home.component';
 import { LayoutComponent } from './components/ui/layout/layout.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 import { VacanciesComponent } from './components/vacancies/vacancies.component';
 import { VacancyPageComponent } from './components/vacancies/vacancy-page/vacancy-page.component';
 
@@ -18,6 +19,8 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
 
       {
         path: '',
@@ -36,5 +39,4 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: 'login', component: LoginComponent },
 ];

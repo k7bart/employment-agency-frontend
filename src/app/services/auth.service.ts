@@ -33,6 +33,16 @@ export class AuthService {
     };
   }
 
+  private handleAuth(token: string, expiresIn: number) {
+    this.token.set(token);
+    this.setAuthTimer(expiresIn);
+
+    const expirationDate = new Date(Date.now() + expiresIn * 1000);
+    this.saveAuthData(token, expirationDate);
+
+    this.router.navigate(['/']);
+  }
+
   private saveAuthData(token: string, expirationDate: Date) {
     localStorage.setItem('token', token);
     localStorage.setItem('expirationDate', expirationDate.toISOString());
@@ -58,13 +68,6 @@ export class AuthService {
     }
   }
 
-  createUser(email: User['email'], password: User['password']) {
-    return this.http.post<User>('http://localhost:8080/auth/signup', {
-      email,
-      password,
-    });
-  }
-
   getToken() {
     return this.token();
   }
@@ -82,14 +85,7 @@ export class AuthService {
         const { token, expiresIn } = response;
 
         if (token) {
-          this.token.set(token);
-
-          this.setAuthTimer(expiresIn);
-
-          const expirationDate = new Date(Date.now() + expiresIn * 1000);
-          this.saveAuthData(token, expirationDate);
-
-          this.router.navigate(['/']);
+          this.handleAuth(token, expiresIn);
         }
       });
   }
@@ -104,5 +100,23 @@ export class AuthService {
     this.clearAuthData();
 
     this.router.navigate(['/']);
+  }
+
+  signup(email: User['email'], password: User['password']) {
+    this.http
+      .post<{ token: string; expiresIn: number }>(
+        'http://localhost:8080/auth/signup',
+        {
+          email,
+          password,
+        },
+      )
+      .subscribe((response) => {
+        const { token, expiresIn } = response;
+
+        if (token) {
+          this.handleAuth(token, expiresIn);
+        }
+      });
   }
 }

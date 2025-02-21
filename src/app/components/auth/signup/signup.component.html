@@ -1,0 +1,77 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <app-h2-title>Nice to meet you 👋</app-h2-title>
+
+  <div>
+    <div class="input-wrap">
+      <label for="email">Email</label>
+
+      <input
+        id="email"
+        formControlName="email"
+        placeholder="Please enter your email"
+        type="email"
+      />
+
+      @if (
+        signupForm.controls["email"].invalid &&
+        signupForm.controls["email"].touched
+      ) {
+        @if (signupForm.controls["email"].errors?.["required"]) {
+          <small class="input-error">Email is required</small>
+        }
+        @if (signupForm.controls["email"].errors?.["email"]) {
+          <small class="input-error">Invalid email format</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="password">Password</label>
+
+      <input
+        id="password"
+        formControlName="password"
+        placeholder="Please enter your password"
+        type="password"
+      />
+      @if (
+        signupForm.controls["password"].invalid &&
+        signupForm.controls["password"].touched
+      ) {
+        @if (signupForm.controls["password"].errors?.["required"]) {
+          <small class="input-error">Password is required</small>
+        }
+        @if (signupForm.controls["password"].errors?.["minlength"]) {
+          <small class="input-error">Min 8 characters</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="confirmPassword">Confirm password</label>
+
+      <input
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        placeholder="Please cofirm your password"
+        type="password"
+      />
+      @if (
+        signupForm.controls["confirmPassword"].invalid &&
+        signupForm.controls["confirmPassword"].touched
+      ) {
+        @if (signupForm.controls["confirmPassword"].errors?.["required"]) {
+          <small class="input-error">Password confirmation is required</small>
+        }
+        @if (signupForm.controls["confirmPassword"].errors?.["minlength"]) {
+          <small class="input-error">Min 8 characters</small>
+        }
+      }
+      @if (signupForm.errors?.["passwordsMismatch"] && signupForm.touched) {
+        <small class="confirm-error input-error">Passwords do not match</small>
+      }
+    </div>
+  </div>
+
+  <app-submit-button />
+</form>
