@@ -1,45 +1,45 @@
 @if (candidate$ | async; as candidate) {
-<app-title
-  [title]="candidate.firstName + ' ' + candidate.lastName"
-  [minSalary]="candidate.salary"
-/>
+  <app-title
+    [title]="candidate.firstName + ' ' + candidate.lastName"
+    [minSalary]="candidate.salary"
+  />
 
-<div>
-  <app-details>
-    <app-tag [text]="candidate.area.name" />
+  <div>
+    <app-details>
+      <app-tag [text]="candidate.area.name" />
 
-    <div>{{ candidate.location.flag + " " + candidate.location.country }}</div>
-  </app-details>
+      <div>
+        {{ candidate.location.flag + " " + candidate.location.country }}
+      </div>
+    </app-details>
 
-  <app-text>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id
-    porttitor ante. Ut et lectus eget arcu varius fermentum sed in lacus.
-    Pellentesque vulputate, nunc quis laoreet volutpat, augue ligula facilisis
-    nulla, non rhoncus sem sapien vitae lorem. Sed gravida augue diam, eget
-    laoreet tellus condimentum sit amet. Aenean neque ex, varius nec eleifend
-    et, tempor et leo. Fusce ultrices mi est, eu laoreet justo viverra a. Etiam
-    dictum, enim maximus euismod maximus, felis arcu aliquam libero, vitae
-    commodo risus urna quis eros. Donec placerat ut tortor quis cursus.
-    Phasellus non quam lorem. Etiam non metus rutrum, ullamcorper augue sed,
-    malesuada justo. Suspendisse ornare ipsum nec vulputate molestie. Maecenas
-    interdum eleifend justo. Vestibulum id posuere ligula.
-  </app-text>
+    <app-text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id
+      porttitor ante. Ut et lectus eget arcu varius fermentum sed in lacus.
+      Pellentesque vulputate, nunc quis laoreet volutpat, augue ligula facilisis
+      nulla, non rhoncus sem sapien vitae lorem. Sed gravida augue diam, eget
+      laoreet tellus condimentum sit amet. Aenean neque ex, varius nec eleifend
+      et, tempor et leo. Fusce ultrices mi est, eu laoreet justo viverra a.
+      Etiam dictum, enim maximus euismod maximus, felis arcu aliquam libero,
+      vitae commodo risus urna quis eros. Donec placerat ut tortor quis cursus.
+      Phasellus non quam lorem. Etiam non metus rutrum, ullamcorper augue sed,
+      malesuada justo. Suspendisse ornare ipsum nec vulputate molestie. Maecenas
+      interdum eleifend justo. Vestibulum id posuere ligula.
+    </app-text>
 
-  <section>
-    @if (vacancies$ | async; as vacancies) { @if (vacancies.length > 0) {
+    <section>
+      @if (suitableVacancies$ | async; as vacancies) {
+        @if (vacancies.length > 0) {
+          <app-h2-title>May be a good fit</app-h2-title>
 
-    <app-h2-title>May be a good fit</app-h2-title>
-
-    @for(vacancy of vacancies; track vacancy._id){
-
-    <app-vacancy-card [vacancy]="vacancy" />
-    <mat-divider></mat-divider>
-
-    } } @else {
-
-    <app-h2-title> No vacancies yet 😔 </app-h2-title>
-
-    } }
-  </section>
-</div>
+          @for (vacancy of vacancies; track vacancy._id) {
+            <app-vacancy-card [vacancy]="vacancy" />
+            <mat-divider></mat-divider>
+          }
+        } @else {
+          <app-h2-title> No vacancies yet 😔 </app-h2-title>
+        }
+      }
+    </section>
+  </div>
 }

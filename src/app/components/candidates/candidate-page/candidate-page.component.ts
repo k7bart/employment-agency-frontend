@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 
@@ -34,18 +34,24 @@ import { VacancyCardComponent } from '../../vacancies/vacancy-card/vacancy-card.
   styleUrl: './candidate-page.component.css',
 })
 export class CandidatePageComponent {
+  private candidatesService = inject(CandidatesService);
+  private vacanciesService = inject(VacanciesService);
   candidate$!: Observable<Candidate>;
-  vacancies$!: Observable<Vacancy[]>;
-
-  constructor(public candidatesService: CandidatesService, public vacanciesService: VacanciesService) {}
+  suitableVacancies$!: Observable<Vacancy[]>;
 
   @Input()
   set id(candidateId: Candidate['_id']) {
     this.candidate$ = this.candidatesService.getCandidateById(candidateId);
   }
 
-  // get suitable vacancies
   ngOnInit() {
-    this.vacancies$ = this.vacanciesService.getVacancies();
+    this.candidate$.subscribe((candidate) => {
+      this.suitableVacancies$ = this.vacanciesService.getSuitableVacancies(
+        candidate.area._id,
+        candidate.location.country,
+        candidate.location.city,
+        candidate.salary,
+      );
+    });
   }
 }
