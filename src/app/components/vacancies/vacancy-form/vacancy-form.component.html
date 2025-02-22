@@ -28,8 +28,10 @@
       <select id="employer" formControlName="employer">
         <option value="" disabled selected>Please select an employer</option>
 
-        @for (employer of employers; track employer._id) {
-          <option>{{ employer.name }}</option>
+        @if (employers$ | async; as employers) {
+          @for (employer of employers; track employer._id) {
+            <option [value]="employer._id">{{ employer.name }}</option>
+          }
         }
       </select>
 
@@ -49,8 +51,10 @@
       <select id="area" formControlName="area">
         <option value="" disabled selected>Please select an area</option>
 
-        @for (area of areas; track area._id) {
-          <option>{{ area.name }}</option>
+        @if (areas$ | async; as areas) {
+          @for (area of areas; track area._id) {
+            <option [value]="area._id">{{ area.name }}</option>
+          }
         }
       </select>
 

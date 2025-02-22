@@ -1,5 +1,7 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
+
 import {
   AbstractControl,
   FormBuilder,
@@ -9,8 +11,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Area } from '../../../models/area.model';
-import { Employer } from '../../../models/employer.model';
 import { Vacancy } from '../../../models/vacancy.model';
 import { AreasService } from '../../../services/areas.service';
 import { EmployersService } from '../../../services/employers.service';
@@ -23,40 +23,24 @@ import { getFlag } from '../../../utils';
 
 @Component({
   selector: 'vacancy-form',
-  imports: [ReactiveFormsModule, H2TitleComponent, SubmitButtonComponent],
+  imports: [
+    AsyncPipe,
+    ReactiveFormsModule,
+    H2TitleComponent,
+    SubmitButtonComponent,
+  ],
   templateUrl: './vacancy-form.component.html',
   styleUrl: './vacancy-form.component.css',
 })
-export class VacancyFormComponent implements OnDestroy {
+export class VacancyFormComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private vacanciesService = inject(VacanciesService);
-
   private areasService = inject(AreasService);
-  private areasSubscription = this.areasService
-    .getAreas()
-    .subscribe((areas) => {
-      this.areas = areas;
-    });
-
   private employersService = inject(EmployersService);
-  private employersSubscription = this.employersService
-    .getEmployers()
-    .subscribe((employers) => {
-      this.employers = employers;
-    });
 
-  areas: Area[] = [];
-  employers: Employer[] = [];
-
-  getAreaId(areaName: string): string | null {
-    const foundArea = this.areas.find((a) => a.name === areaName);
-    return foundArea ? foundArea._id : null;
-  }
-  getEmployerId(employerName: string): string | null {
-    const foundEmployer = this.employers.find((e) => e.name === employerName);
-    return foundEmployer ? foundEmployer._id : null;
-  }
+  areas$ = this.areasService.getAreas();
+  employers$ = this.employersService.getEmployers();
 
   readonly vacancyForm: FormGroup = this.fb.group(
     {
@@ -65,8 +49,8 @@ export class VacancyFormComponent implements OnDestroy {
       area: ['', [Validators.required]],
       maxSalary: [''],
       minSalary: [''],
-      country: ['', [Validators.required]],
-      city: ['', [Validators.required]],
+      country: [''],
+      city: [''],
     },
     {
       validators: this.minSalaryGreaterThanMaxSalary,
@@ -85,7 +69,9 @@ export class VacancyFormComponent implements OnDestroy {
   onSubmit(): void {
     if (this.vacancyForm.invalid) return;
 
-    const { area, employer, country, city, ...rest } = this.vacancyForm.value;
+    const { title, employer, area, maxSalary, minSalary, country, city } =
+      this.vacancyForm.value;
+
     const location = country && {
       country,
       flag: getFlag(country),
@@ -94,18 +80,15 @@ export class VacancyFormComponent implements OnDestroy {
 
     this.vacanciesService
       .addVacancy({
-        ...rest,
-        area: this.getAreaId(area),
-        employer: this.getEmployerId(employer),
+        title,
+        employer,
+        area,
+        ...(minSalary && { minSalary }),
+        ...(maxSalary && { maxSalary }),
         location,
       })
       .subscribe(({ _id }: Vacancy) =>
         this.router.navigate([`/vacancies/vacancy/${_id}`]),
       );
-  }
-
-  ngOnDestroy(): void {
-    this.areasSubscription.unsubscribe();
-    this.employersSubscription.unsubscribe();
   }
 }
