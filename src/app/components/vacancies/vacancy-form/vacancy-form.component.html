@@ -1,0 +1,124 @@
+<form [formGroup]="vacancyForm" (ngSubmit)="onSubmit()">
+  <app-h2-title>Adding new vacancy 🥳</app-h2-title>
+
+  <div>
+    <div class="input-wrap">
+      <label for="title">Title</label>
+
+      <input
+        id="title"
+        formControlName="title"
+        placeholder="Please enter title"
+        type="text"
+      />
+
+      @if (
+        vacancyForm.controls["title"].invalid &&
+        vacancyForm.controls["title"].touched
+      ) {
+        @if (vacancyForm.controls["title"].errors?.["required"]) {
+          <small class="input-error">Title is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="employer">Employer</label>
+
+      <select id="employer" formControlName="employer">
+        <option value="" disabled selected>Please select an employer</option>
+
+        @for (employer of employers; track employer._id) {
+          <option>{{ employer.name }}</option>
+        }
+      </select>
+
+      @if (
+        vacancyForm.controls["employer"].invalid &&
+        vacancyForm.controls["employer"].touched
+      ) {
+        @if (vacancyForm.controls["employer"].errors?.["required"]) {
+          <small class="input-error">Employer is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="area">Area</label>
+
+      <select id="area" formControlName="area">
+        <option value="" disabled selected>Please select an area</option>
+
+        @for (area of areas; track area._id) {
+          <option>{{ area.name }}</option>
+        }
+      </select>
+
+      @if (
+        vacancyForm.controls["area"].invalid &&
+        vacancyForm.controls["area"].touched
+      ) {
+        @if (vacancyForm.controls["area"].errors?.["required"]) {
+          <small class="input-error">Area is required</small>
+        }
+      }
+    </div>
+
+    <div class="salaries">
+      <div>
+        <label for="minSalary">Salary Minimum </label>
+
+        <input
+          id="minSalary"
+          formControlName="minSalary"
+          placeholder="Please enter salary minimum "
+          type="number"
+        />
+      </div>
+
+      <div>
+        <label for="maxSalary">Salary Maximum </label>
+
+        <input
+          id="maxSalary"
+          formControlName="maxSalary"
+          placeholder="Please enter salary maximum "
+          type="number"
+        />
+      </div>
+
+      @if (
+        vacancyForm.errors?.["minSalaryGreaterThanMaxSalary"] &&
+        vacancyForm.touched
+      ) {
+        <small class="confirm-error input-error">
+          Minimum salary cannot be greater than maximum salary
+        </small>
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="city">Country</label>
+
+      <input
+        id="country"
+        formControlName="country"
+        placeholder="Please enter country"
+        type="text"
+      />
+    </div>
+
+    <div class="input-wrap">
+      <label for="city">City</label>
+
+      <input
+        id="city"
+        formControlName="city"
+        placeholder="Please enter city"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <app-submit-button />
+</form>

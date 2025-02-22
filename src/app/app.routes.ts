@@ -12,6 +12,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { VacanciesComponent } from './components/vacancies/vacancies.component';
 import { VacancyPageComponent } from './components/vacancies/vacancy-page/vacancy-page.component';
+import { VacancyFormComponent } from './components/vacancies/vacancy-form/vacancy-form.component';
 
 export const routes: Routes = [
   {
@@ -34,7 +35,8 @@ export const routes: Routes = [
             component: CandidatePageComponent,
           },
           { path: 'vacancies', component: VacanciesComponent },
-          { path: 'vacancies/:id', component: VacancyPageComponent },
+          { path: 'vacancies/new-vacancy', component: VacancyFormComponent },
+          { path: 'vacancies/vacancy/:id', component: VacancyPageComponent },
         ],
       },
     ],
