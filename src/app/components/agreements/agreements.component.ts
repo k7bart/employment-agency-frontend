@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
 
 import { MatDividerModule } from '@angular/material/divider';
 
-import { Agreement } from '../../models/agreement.model';
 import { AgreementsService } from '../../services/agreements.service';
 
 import { AgreementCardComponent } from './agreement-card/agreement-card.component';
@@ -12,6 +10,7 @@ import { AsideButtonComponent } from '../ui/aside-button/aside-button.component'
 import { AsideComponent } from '../ui/aside/aside.component';
 import { H2TitleComponent } from '../ui/h2-title/h2-title.component';
 import { TitleComponent } from '../ui/title/title.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agreements',
@@ -29,12 +28,13 @@ import { TitleComponent } from '../ui/title/title.component';
   templateUrl: './agreements.component.html',
   styleUrl: './agreements.component.css',
 })
-export class AgreementsComponent implements OnInit {
-  agreements$!: Observable<Agreement[]>;
+export class AgreementsComponent {
+  private router = inject(Router);
+  agreementsService = inject(AgreementsService);
 
-  constructor(public agreementsService: AgreementsService) {}
+  agreements$ = this.agreementsService.getAgreements();
 
-  ngOnInit() {
-    this.agreements$ = this.agreementsService.getAgreements();
+  goToAgreementForm() {
+    this.router.navigate(['/agreements/new-agreement']);
   }
 }

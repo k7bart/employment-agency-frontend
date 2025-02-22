@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { authGuard } from './components/auth/auth.guard';
 
+import { AgreementFormComponent } from './components/agreements/agreement-form/agreement-form.component';
 import { AgreementPageComponent } from './components/agreements/agreement-page/agreement-page.component';
 import { AgreementsComponent } from './components/agreements/agreements.component';
 import { CandidatePageComponent } from './components/candidates/candidate-page/candidate-page.component';
@@ -28,7 +29,14 @@ export const routes: Routes = [
         canActivateChild: [authGuard],
         children: [
           { path: 'agreements', component: AgreementsComponent },
-          { path: 'agreements/:id', component: AgreementPageComponent },
+          {
+            path: 'agreements/new-agreement',
+            component: AgreementFormComponent,
+          },
+          {
+            path: 'agreements/agreement/:id',
+            component: AgreementPageComponent,
+          },
           { path: 'candidates', component: CandidatesComponent },
           {
             path: 'candidates/candidate/:id',

@@ -1,0 +1,117 @@
+<form [formGroup]="agreementForm" (ngSubmit)="onSubmit()">
+  <app-h2-title>Adding new agreement 💸</app-h2-title>
+
+  <div>
+    <div class="input-wrap">
+      <label for="employer">Employer</label>
+
+      <select id="employer" formControlName="employer">
+        <option value="" disabled selected>Please select an employer</option>
+
+        @if (employers$ | async; as employers) {
+          @for (employer of employers; track employer._id) {
+            <option [value]="employer._id">{{ employer.name }}</option>
+          }
+        }
+      </select>
+
+      @if (
+        agreementForm.controls["employer"].invalid &&
+        agreementForm.controls["employer"].touched
+      ) {
+        @if (agreementForm.controls["employer"].errors?.["required"]) {
+          <small class="input-error">Employer is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="vacancy">Vacancy</label>
+
+      <select id="vacancy" formControlName="vacancy">
+        <option value="" disabled selected>Please select vacancy</option>
+
+        @for (vacancy of vacancies$ | async; track vacancy._id) {
+          <option [value]="vacancy._id">
+            {{ vacancy.title }}
+          </option>
+        }
+      </select>
+
+      @if (
+        agreementForm.controls["vacancy"].invalid &&
+        agreementForm.controls["vacancy"].touched
+      ) {
+        @if (agreementForm.controls["vacancy"].errors?.["required"]) {
+          <small class="input-error">Vacancy is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="candidateFirstName">Candidate's first name</label>
+
+      <input
+        id="candidateFirstName"
+        formControlName="candidateFirstName"
+        placeholder="Please enter candidate's first name"
+        type="text"
+      />
+
+      @if (
+        agreementForm.controls["candidateFirstName"].invalid &&
+        agreementForm.controls["candidateFirstName"].touched
+      ) {
+        @if (
+          agreementForm.controls["candidateFirstName"].errors?.["required"]
+        ) {
+          <small class="input-error">Candidate's first name is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="candidateLastName">Candidate's last name</label>
+
+      <input
+        id="candidateLastName"
+        formControlName="candidateLastName"
+        placeholder="Please enter candidate's last name"
+        type="text"
+      />
+
+      @if (
+        agreementForm.controls["candidateLastName"].invalid &&
+        agreementForm.controls["candidateLastName"].touched
+      ) {
+        @if (agreementForm.controls["candidateLastName"].errors?.["required"]) {
+          <small class="input-error">Candidate's last name is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="commission">Commission</label>
+
+      <input
+        id="commission"
+        formControlName="commission"
+        placeholder="Please enter commission"
+        type="number"
+      />
+
+      @if (
+        agreementForm.controls["commission"].invalid &&
+        agreementForm.controls["commission"].touched
+      ) {
+        @if (agreementForm.controls["commission"].errors?.["required"]) {
+          <small class="input-error">Commission is required</small>
+        }
+        @if (agreementForm.controls["commission"].errors?.["min"]) {
+          <small class="input-error">Commission can't be negative</small>
+        }
+      }
+    </div>
+  </div>
+  <app-submit-button />
+</form>

@@ -19,6 +19,6 @@ export class AgreementCardComponent {
   agreement = input.required<Agreement>();
 
   goToAgreement(id: Agreement['_id']) {
-    this.router.navigate(['/agreements', id]);
+    this.router.navigate(['/agreements/agreement/', id]);
   }
 }

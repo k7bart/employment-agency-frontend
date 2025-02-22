@@ -20,6 +20,19 @@ export class CandidatesService {
     );
   }
 
+  getCandidateIdByFirstAndLastName(
+    firstName: Candidate['firstName'],
+    lastName: Candidate['lastName'],
+  ) {
+    const params = new HttpParams()
+      .set('firstName', firstName)
+      .set('lastName', lastName);
+    return this.http.get<Candidate>(
+      'http://localhost:8080/candidates//search/name',
+      { params },
+    );
+  }
+
   getSuitableCandidates(
     areaId: Area['_id'],
     country?: Vacancy['location']['country'],
