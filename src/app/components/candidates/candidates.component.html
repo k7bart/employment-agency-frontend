@@ -1,18 +1,20 @@
 @if (candidates$ | async; as candidates) {
-<app-title [title]="'Candidates'" [mutedNum]="candidates.length" />
+  <app-title [title]="'Candidates'" [mutedNum]="candidates.length" />
 
-<div>
-  <section>
-    @if (candidates.length > 0) { @for (candidate of candidates; track candidate._id) {
-    <app-candidate-card [candidate]="candidate"></app-candidate-card>
-    <mat-divider></mat-divider>
-    } } @else {
-    <app-h2-title> No candidates yet 😔 </app-h2-title>
-    }
-  </section>
+  <div>
+    <section>
+      @if (candidates.length > 0) {
+        @for (candidate of candidates; track candidate._id) {
+          <app-candidate-card [candidate]="candidate"></app-candidate-card>
+          <mat-divider></mat-divider>
+        }
+      } @else {
+        <app-h2-title> No candidates yet 😔 </app-h2-title>
+      }
+    </section>
 
-  <app-aside>
-    <aside-button text="Add candidate" />
-  </app-aside>
-</div>
+    <app-aside>
+      <aside-button (click)="goToCandidateForm()" text="Add candidate" />
+    </app-aside>
+  </div>
 }

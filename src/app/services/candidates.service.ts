@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 
@@ -8,7 +8,7 @@ import { Vacancy } from '../models/vacancy.model';
 
 @Injectable({ providedIn: 'root' })
 export class CandidatesService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getCandidates() {
     return this.http.get<Candidate[]>('http://localhost:8080/candidates');
@@ -16,21 +16,26 @@ export class CandidatesService {
 
   getCandidateById(id: Candidate['_id']) {
     return this.http.get<Candidate>(
-      `http://localhost:8080/candidates/candidate/${id}`
+      `http://localhost:8080/candidates/candidate/${id}`,
     );
   }
 
   getSuitableCandidates(
     areaId: Area['_id'],
-    country: Vacancy['location']['country'],
-    city: Vacancy['location']['city'],
+    country?: Vacancy['location']['country'],
+    city?: Vacancy['location']['city'],
     minSalary?: Vacancy['minSalary'],
-    maxSalary?: Vacancy['maxSalary']
+    maxSalary?: Vacancy['maxSalary'],
   ) {
-    let params = new HttpParams()
-      .set('areaId', areaId)
-      .set('country', country)
-      .set('city', city);
+    let params = new HttpParams().set('areaId', areaId);
+
+    if (country) {
+      params = params.set('country', country);
+    }
+
+    if (city) {
+      params = params.set('city', city);
+    }
 
     if (minSalary) {
       params = params.set('minSalary', minSalary);
@@ -42,14 +47,14 @@ export class CandidatesService {
 
     return this.http.get<Candidate[]>(
       'http://localhost:8080/candidates/suitable',
-      { params }
+      { params },
     );
   }
 
   addCandidate(candidate: Candidate) {
     return this.http.post<Candidate>(
       'http://localhost:8080/candidates',
-      candidate
+      candidate,
     );
   }
 }
