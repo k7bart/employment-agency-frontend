@@ -6,11 +6,14 @@ import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-layout',
   imports: [RouterOutlet, HeaderComponent],
+  styleUrl: './layout.component.css',
 
   template: `
     <app-header></app-header>
     <main>
-      <router-outlet> </router-outlet>
+      <section>
+        <router-outlet> </router-outlet>
+      </section>
     </main>
   `,
 })
