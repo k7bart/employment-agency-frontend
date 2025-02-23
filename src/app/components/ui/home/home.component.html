@@ -1,30 +1,5 @@
 @if (this.authService.isLoggedIn()) {
   <app-dashboard />
 } @else {
-  <div class="wrap">
-    <div class="titles">
-      <app-title title="Awesome Empoyment Agency"></app-title>
-
-      <p class="sub-title">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae
-        erat sit amet leo hendrerit mattis at a magna. Vestibulum accumsan
-        aliquet massa a volutpat. Morbi finibus ullamcorper felis, eget
-        tincidunt nunc ultrices sed. Etiam maximus fringilla fringilla.
-      </p>
-
-      <aside-button (click)="onButtonClick()" text="Login" />
-    </div>
-
-    <div class="stats">
-      @for (stat of stats; track stat.label) {
-        <div class="stats-item">
-          <div class="line"></div>
-          <div>
-            <span>{{ stat.value }}</span>
-            <p>{{ stat.label }}</p>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
+  <app-landing />
 }
