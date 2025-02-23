@@ -12,8 +12,6 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   private authService = inject(AuthService);
 
-  title = 'employment-agency-frontend';
-
   ngOnInit() {
     this.authService.autoAuthUser();
   }

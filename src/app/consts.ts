@@ -14,3 +14,10 @@ export const FORMS_NAV_ITEMS = [
   { name: 'New Candidate', href: '/new-candidate' },
   { name: 'New Agreement', href: '/new-vacancy' },
 ];
+
+export const STATS = [
+  { label: 'agreements', value: 100 },
+  { label: 'candidates', value: 100 },
+  { label: 'vacancies', value: 100 },
+  { label: 'revenue', value: 100 },
+];

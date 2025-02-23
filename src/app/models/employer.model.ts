@@ -1,9 +1,6 @@
 interface IEmployer {
   _id: string;
   name: string;
-  area: string;
-  maxSalary?: number | undefined;
-  minSalary?: number | undefined;
   address: {
     country: string;
     flag: string;
@@ -17,9 +14,6 @@ interface IEmployer {
 export class Employer implements IEmployer {
   _id: string;
   name: string;
-  area: string;
-  maxSalary?: number | undefined;
-  minSalary?: number | undefined;
   address: {
     country: string;
     flag: string;
@@ -32,9 +26,6 @@ export class Employer implements IEmployer {
   constructor(employer: IEmployer) {
     this._id = employer._id;
     this.name = employer.name;
-    this.area = employer.area;
-    this.maxSalary = employer.maxSalary;
-    this.minSalary = employer.minSalary;
     this.address = {
       country: employer.address.country,
       flag: employer.address.flag,

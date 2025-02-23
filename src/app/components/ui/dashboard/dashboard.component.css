@@ -31,7 +31,8 @@
 
       .content {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
+
         flex-grow: 1;
         padding: 30px 60px 30px 50px;
         transition: color 0.3s ease;

@@ -8,12 +8,9 @@ import { VacanciesService } from '../../services/vacancies.service';
 
 import { AsideButtonComponent } from '../ui/aside-button/aside-button.component';
 import { AsideComponent } from '../ui/aside/aside.component';
-import { ChipsContainerComponent } from '../ui/chips-container/chips-container.component';
 import { H2TitleComponent } from '../ui/h2-title/h2-title.component';
-import { TagComponent } from '../ui/tag/tag.component';
 import { TitleComponent } from '../ui/title/title.component';
 import { VacancyCardComponent } from '../vacancies/vacancy-card/vacancy-card.component';
-import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 
 @Component({
   selector: 'app-vacancies',
@@ -24,12 +21,9 @@ import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 
     AsideComponent,
     AsideButtonComponent,
-    ChipsContainerComponent,
     H2TitleComponent,
-    TagComponent,
     TitleComponent,
     VacancyCardComponent,
-    VacancyFormComponent,
   ],
   templateUrl: './vacancies.component.html',
   styleUrl: './vacancies.component.css',

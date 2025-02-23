@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { H2TitleComponent } from '../h2-title/h2-title.component';
 
-import { AUTHED_NAV_ITEMS, FORMS_NAV_ITEMS } from '../../../consts/nav-items';
+import { AUTHED_NAV_ITEMS, FORMS_NAV_ITEMS } from '../../../consts';
 
 @Component({
   selector: 'app-dashboard',

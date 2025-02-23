@@ -15,7 +15,7 @@ import { SubmitButtonComponent } from '../../ui/submit-button/submit-button.comp
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);
 
-  readonly authService = inject(AuthService);
+  private authService = inject(AuthService);
 
   readonly loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
