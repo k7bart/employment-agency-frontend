@@ -1,0 +1,21 @@
+<div class="dashboard">
+  <app-h2-title>Where to now?🕵️</app-h2-title>
+
+  @for (navGroup of [authedNavItems, formsNavItems]; track navGroup) {
+    <div class="cards">
+      @for (navItem of navGroup; track navItem.name) {
+        <a [routerLink]="navItem.href" class="card">
+          <div class="line"></div>
+          <div class="content">
+            <h5 class="text">{{ navItem.name }}</h5>
+            <img
+              src="https://www.techmagic.co/images/arrows/arrow-blog.svg"
+              class="blog-slide_button"
+              alt="arrow"
+            />
+          </div>
+        </a>
+      }
+    </div>
+  }
+</div>
