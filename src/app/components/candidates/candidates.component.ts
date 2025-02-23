@@ -35,6 +35,6 @@ export class CandidatesComponent {
   candidates$ = this.candidatesService.getCandidates();
 
   goToCandidateForm() {
-    this.router.navigate(['/candidates/new-candidate']);
+    this.router.navigate(['/new-candidate']);
   }
 }

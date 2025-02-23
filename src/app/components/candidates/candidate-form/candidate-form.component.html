@@ -1,0 +1,187 @@
+<form [formGroup]="candidateForm" (ngSubmit)="onSubmit()">
+  <app-h2-title>Adding new candidate 🧑‍💼</app-h2-title>
+
+  <div>
+    <div class="input-wrap">
+      <label for="firstName">First name</label>
+
+      <input
+        id="firstName"
+        formControlName="firstName"
+        placeholder="Please enter first name"
+        type="text"
+      />
+
+      @if (
+        candidateForm.controls["firstName"].invalid &&
+        candidateForm.controls["firstName"].touched
+      ) {
+        @if (candidateForm.controls["firstName"].errors?.["required"]) {
+          <small class="input-error">First name is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="lastName">Last name</label>
+
+      <input
+        id="lastName"
+        formControlName="lastName"
+        placeholder="Please enter last name"
+        type="text"
+      />
+
+      @if (
+        candidateForm.controls["lastName"].invalid &&
+        candidateForm.controls["lastName"].touched
+      ) {
+        @if (candidateForm.controls["lastName"].errors?.["required"]) {
+          <small class="input-error">Last name is required</small>
+        }
+      }
+    </div>
+
+    <div class="input-wrap">
+      <label for="patronymic">Patronymic</label>
+
+      <input
+        id="patronymic"
+        formControlName="patronymic"
+        placeholder="Please enter patronymic"
+        type="text"
+      />
+    </div>
+
+    <div class="input-wrap">
+      <label for="qualification">Qualification</label>
+
+      <input
+        id="qualification"
+        formControlName="qualification"
+        placeholder="Please enter qualification"
+        type="text"
+      />
+
+      @if (
+        candidateForm.controls["qualification"].invalid &&
+        candidateForm.controls["qualification"].touched
+      ) {
+        @if (candidateForm.controls["qualification"].errors?.["required"]) {
+          <small class="input-error">Qualification is required</small>
+        }
+      }
+    </div>
+    <div class="inputs-container">
+      <div>
+        <label for="area">Area</label>
+
+        <select id="area" formControlName="area">
+          <option value="" disabled selected>Please select an area</option>
+
+          @if (areas$ | async; as areas) {
+            @for (area of areas; track area._id) {
+              <option [value]="area._id">{{ area.name }}</option>
+            }
+          }
+        </select>
+
+        @if (
+          candidateForm.controls["area"].invalid &&
+          candidateForm.controls["area"].touched
+        ) {
+          @if (candidateForm.controls["area"].errors?.["required"]) {
+            <small class="input-error">Area is required</small>
+          }
+        }
+      </div>
+
+      <div>
+        <label for="salary">Salary</label>
+
+        <input
+          id="salary"
+          formControlName="salary"
+          placeholder="Please enter salary"
+          type="number"
+        />
+
+        @if (
+          candidateForm.controls["salary"].invalid &&
+          candidateForm.controls["salary"].touched
+        ) {
+          @if (candidateForm.controls["salary"].errors?.["required"]) {
+            <small class="input-error">Salary is required</small>
+          }
+          @if (candidateForm.controls["salary"].errors?.["min"]) {
+            <small class="input-error">Salary can't be negative</small>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="input-wrap">
+      <label for="phone">Phone</label>
+
+      <input
+        id="phone"
+        formControlName="phone"
+        placeholder="Please enter phone"
+        type="text"
+      />
+
+      @if (
+        candidateForm.controls["phone"].invalid &&
+        candidateForm.controls["phone"].touched
+      ) {
+        @if (candidateForm.controls["phone"].errors?.["required"]) {
+          <small class="input-error">Phone is required</small>
+        }
+      }
+    </div>
+
+    <div class="inputs-container">
+      <div>
+        <label for="city">Country</label>
+
+        <input
+          id="country"
+          formControlName="country"
+          placeholder="Please enter country"
+          type="text"
+        />
+
+        @if (
+          candidateForm.controls["country"].invalid &&
+          candidateForm.controls["country"].touched
+        ) {
+          @if (candidateForm.controls["country"].errors?.["required"]) {
+            <small class="input-error">Country is required</small>
+          }
+        }
+      </div>
+
+      <div>
+        <label for="city">City</label>
+
+        <input
+          id="city"
+          formControlName="city"
+          placeholder="Please enter city"
+          type="text"
+        />
+
+        @if (
+          candidateForm.controls["city"].invalid &&
+          candidateForm.controls["city"].touched
+        ) {
+          @if (candidateForm.controls["city"].errors?.["required"]) {
+            <small class="input-error">City is required</small>
+          }
+        }
+      </div>
+    </div>
+  </div>
+
+  <app-submit-button />
+</form>

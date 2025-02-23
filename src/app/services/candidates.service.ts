@@ -64,7 +64,16 @@ export class CandidatesService {
     );
   }
 
-  addCandidate(candidate: Candidate) {
+  addCandidate(candidate: {
+    firstName: Candidate['firstName'];
+    lastName: Candidate['lastName'];
+    patronymic?: Candidate['patronymic'];
+    area: Area['_id'];
+    qualification: Candidate['qualification'];
+    salary: Candidate['salary'];
+    phone: Candidate['phone'];
+    location: Candidate['location'];
+  }) {
     return this.http.post<Candidate>(
       'http://localhost:8080/candidates',
       candidate,
