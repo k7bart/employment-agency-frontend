@@ -1,13 +1,17 @@
-button {
+button[mat-stroked-button] {
   height: 42px;
   font-weight: 800;
   padding: 0 30px;
   transition: all 0.3s ease;
-  border: 2px solid white;
-  color: white !important;
+  border-width: 2px;
+
+  &:not([disabled]) {
+    border: 2px solid white;
+    color: white;
+  }
 
   &:hover {
     background-color: white;
-    color: var(--brand-color) !important;
+    color: var(--brand-color);
   }
 }
