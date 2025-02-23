@@ -1,15 +1,28 @@
+:root {
+  --accent-color: #e0024d;
+  --accent-color-hover: #c0004d;
+  --brand-color: #005b58;
+  --brand-color-hover: #007672;
+  --text-color: #101820;
+}
+
 * {
   box-sizing: border-box;
   border: 0 solid #e5e7eb;
+  font-family: "Raleway", serif;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
 
-  font-family: "Raleway", serif;
   font-optical-sizing: auto;
+  font-variant-numeric: lining-nums;
   font-style: normal;
   font-size: 1.3rem;
 
@@ -17,13 +30,175 @@ body {
   overflow-x: hidden;
 }
 
-ul {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 900;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--text-color);
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--brand-color);
+  }
+}
+
+form {
+  width: min-content;
+  padding: 80px 30px;
+  background-color: var(--brand-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: 768px) {
+    padding: 80px 60px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 80px 100px 80px 80px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 100px 80px;
+  }
+
+  h2 {
+    color: white;
+  }
+}
+
+label {
+  display: block;
+  width: fit-content;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 9px;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="text"],
+select {
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  font-weight: 600;
+  font-size: 16px;
+  background: white;
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  border: 2px solid transparent;
+
+  height: 44px;
+  line-height: 44px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+
+  @media (min-width: 1920px) {
+    height: 52px;
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--text-color);
+    font-style: italic;
+    font-weight: 200;
+  }
+
+  &::placeholder {
+    color: var(--text-color);
+    font-style: italic;
+    font-weight: 200;
+  }
+}
+
+select.ng-invalid {
+  color: var(--text-color);
+  font-style: italic;
+  font-weight: 200;
+}
+
+.inputs-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+
+  > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
+
+.input-wrap {
+  position: relative;
+
+  input {
+    width: 315px;
+
+    @media (min-width: 768px) {
+      width: 521px;
+    }
+    @media (min-width: 1920px) {
+      width: 670px;
+    }
+  }
+}
+
+.input-error {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  color: var(--accent-color);
+  font-size: 12px;
+  font-weight: 800;
+
+  @media (min-width: 1280px) {
+    font-size: 14px;
+  }
+}
+
+app-agreements,
+app-vacancies,
+app-candidates,
+app-home {
+  width: 100%;
 }
