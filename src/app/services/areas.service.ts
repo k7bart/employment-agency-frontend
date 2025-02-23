@@ -5,7 +5,7 @@ import { Area } from '../models/area.model';
 
 @Injectable({ providedIn: 'root' })
 export class AreasService {
-  private readonly http = inject(HttpClient);
+  private http = inject(HttpClient);
 
   getAreas() {
     return this.http.get<Area[]>('http://localhost:8080/areas');

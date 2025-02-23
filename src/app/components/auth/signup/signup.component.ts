@@ -18,11 +18,10 @@ import { SubmitButtonComponent } from '../../ui/submit-button/submit-button.comp
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  private readonly fb = inject(FormBuilder);
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
 
-  readonly authService = inject(AuthService);
-
-  readonly signupForm: FormGroup = this.fb.group(
+  signupForm: FormGroup = this.fb.group(
     {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],

@@ -10,7 +10,7 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  private readonly authService = inject(AuthService);
+  private authService = inject(AuthService);
 
   title = 'employment-agency-frontend';
 

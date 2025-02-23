@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 
@@ -34,13 +34,11 @@ import { AgreementsService } from '../../../services/agreements.service';
   styleUrl: './agreement-page.component.css',
 })
 export class AgreementPageComponent implements OnInit {
+  private agreementsService = inject(AgreementsService);
+  private vacanciesService = inject(VacanciesService);
+
   agreement$!: Observable<Agreement>;
   openVacancies$!: Observable<Vacancy[]>;
-
-  constructor(
-    public agreementsService: AgreementsService,
-    public vacanciesService: VacanciesService
-  ) {}
 
   @Input()
   set id(agreementId: Agreement['_id']) {
@@ -50,7 +48,7 @@ export class AgreementPageComponent implements OnInit {
   ngOnInit() {
     this.agreement$.subscribe((agreement) => {
       this.openVacancies$ = this.vacanciesService.getVacanciesByEmployerId(
-        agreement.vacancy.employer._id
+        agreement.vacancy.employer._id,
       );
     });
   }

@@ -14,11 +14,11 @@ import { TagComponent } from '../../ui/tag/tag.component';
   templateUrl: './vacancy-card.component.html',
 })
 export class VacancyCardComponent {
-  private readonly router = inject(Router);
+  private router = inject(Router);
 
   vacancy = input.required<Vacancy>();
 
   goToVacancy(id: Vacancy['_id']) {
-    this.router.navigate(['/vacancies', id]);
+    this.router.navigate(['/vacancies/vacancy', id]);
   }
 }

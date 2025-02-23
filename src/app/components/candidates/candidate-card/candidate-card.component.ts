@@ -14,7 +14,7 @@ import { TagComponent } from '../../ui/tag/tag.component';
   templateUrl: './candidate-card.component.html',
 })
 export class CandidateCardComponent {
-  private readonly router = inject(Router);
+  private router = inject(Router);
 
   candidate = input.required<Candidate>();
 

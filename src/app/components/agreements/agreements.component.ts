@@ -30,11 +30,11 @@ import { Router } from '@angular/router';
 })
 export class AgreementsComponent {
   private router = inject(Router);
-  agreementsService = inject(AgreementsService);
+  private agreementsService = inject(AgreementsService);
 
   agreements$ = this.agreementsService.getAgreements();
 
   goToAgreementForm() {
-    this.router.navigate(['/agreements/new-agreement']);
+    this.router.navigate(['/new-agreement']);
   }
 }

@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   readonly isLoggedIn = computed(() => !!this.token());
 
-  private readonly http = inject(HttpClient);
-  private readonly router = inject(Router);
+  private http = inject(HttpClient);
+  private router = inject(Router);
 
   private token = signal<string | null>(null);
   private tokenTimer: ReturnType<typeof setTimeout> | null = null;

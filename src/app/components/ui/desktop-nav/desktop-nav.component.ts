@@ -18,5 +18,5 @@ export class DesktopNavComponent {
   readonly authedNavItems = AUTHED_NAV_ITEMS;
   readonly notAuthedNavItems = NOT_AUTHED_NAV_ITEMS;
 
-  readonly authService = inject(AuthService);
+  authService = inject(AuthService);
 }

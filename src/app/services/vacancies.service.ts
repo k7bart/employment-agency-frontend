@@ -7,7 +7,7 @@ import { Area } from '../models/area.model';
 
 @Injectable({ providedIn: 'root' })
 export class VacanciesService {
-  private readonly http = inject(HttpClient);
+  private http = inject(HttpClient);
 
   getSuitableVacancies(
     areaId: Area['_id'],

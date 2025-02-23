@@ -1,11 +1,13 @@
 <h3>
   {{ title() }}
 
-  @if(minSalary()){
-  <span class="colored-text">from ${{ minSalary() }}</span>
-  } @if(maxSalary()){
-  <span class="colored-text">up to ${{ maxSalary() }}</span>
-  }@if(commission()){
-  <span class="colored-text">➡️ ${{ commission() }}</span>
+  @if (minSalary()) {
+    <span class="colored-text">from ${{ minSalary() }}</span>
+  }
+  @if (maxSalary()) {
+    <span class="colored-text">up to ${{ maxSalary() }}</span>
+  }
+  @if (commission()) {
+    <span class="colored-text">➡️ ${{ commission() }}</span>
   }
 </h3>

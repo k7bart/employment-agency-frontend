@@ -3,9 +3,7 @@ div {
   flex-direction: column-reverse;
 
   @media (min-width: 768px) {
-    & {
-      flex-direction: row;
-    }
+    flex-direction: row;
   }
 
   section {

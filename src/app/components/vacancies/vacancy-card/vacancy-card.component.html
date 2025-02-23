@@ -4,7 +4,11 @@
 
     <app-tag [text]="vacancy().area.name" />
 
-    <div>{{ vacancy().location.flag + " " + vacancy().location.country }}</div>
+    @if (vacancy().location) {
+      <div>
+        {{ vacancy().location.flag + " " + vacancy().location.country }}
+      </div>
+    }
   </app-details>
 
   <app-card-title

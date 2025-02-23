@@ -1,32 +1,20 @@
 @if (vacancies$ | async; as vacancies) {
-<app-title [title]="'Vacancies'" [mutedNum]="vacancies.length" />
+  <app-title [title]="'Vacancies'" [mutedNum]="vacancies.length" />
 
-<div>
-  <section>
-    @if (vacancies.length > 0) { @for(vacancy of vacancies; track vacancy._id) {
-    <app-vacancy-card [vacancy]="vacancy" />
-    <mat-divider></mat-divider>
-    } } @else {
-    <app-h2-title> No vacancies yet 😔 </app-h2-title>
-    }
-  </section>
+  <div>
+    <section>
+      @if (vacancies.length > 0) {
+        @for (vacancy of vacancies; track vacancy._id) {
+          <app-vacancy-card [vacancy]="vacancy" />
+          <mat-divider></mat-divider>
+        }
+      } @else {
+        <app-h2-title> No vacancies yet 😔 </app-h2-title>
+      }
+    </section>
 
-  <app-aside class="aside">
-    <aside-button (click)="openForm()" text="Add vacancy" />
-
-    @if (isFormOpen) {
-    <vacancy-form (close)="closeForm()"></vacancy-form>
-    }
-
-    <chips-container>
-      <app-tag text="IT" />
-      <app-tag text="Marketing" />
-      <app-tag text="Sales" />
-      <app-tag text="Finance" />
-      <app-tag text="Human Resources" />
-      <app-tag text="Operations" />
-      <app-tag text="Legal" />
-    </chips-container>
-  </app-aside>
-</div>
+    <app-aside class="aside">
+      <aside-button (click)="goToVacancyForm()" text="Add vacancy" />
+    </app-aside>
+  </div>
 }
