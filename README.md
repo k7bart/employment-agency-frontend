@@ -19,7 +19,7 @@ To install the app, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/employment-agency-frontend.git
+   git clone https://github.com/k7bart/employment-agency-frontend.git
    ```
 2. Navigate to the project directory:
    ```bash
